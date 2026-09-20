@@ -20,7 +20,7 @@ Environment variables (GitHub: Settings -> Secrets and variables -> Actions):
                             URL (works for PUBLIC repos only). Instagram must be able to download the file.
     POST_TIMEZONE           Overrides the Settings sheet (default Asia/Karachi)
     GRAPH_API_VERSION       Default v26.0
-    POST_DAY / DRY_RUN / FORCE_POST    Same as the --day / --dry-run / --force flags (used by GitHub Actions)
+    POST_DAY / DRY_RUN / FORCE_POST / POST_ONLY    Same as the --day / --dry-run / --force / --only flags (GitHub Actions)
 
 Usage:
     python post_to_facebook_instagram.py --check          # validate calendar + media, post nothing
@@ -293,7 +293,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--day", type=int, default=int(os.getenv("POST_DAY") or 0) or None,
                     help="Post a specific calendar day (manual run - progress is not changed)")
     ap.add_argument("--dry-run", action="store_true", default=env_flag("DRY_RUN"), help="Show the post, publish nothing")
-    ap.add_argument("--only", choices=["both", "facebook", "instagram"], default="both")
+    ap.add_argument("--only", choices=["both", "facebook", "instagram"], default=os.getenv("POST_ONLY") or "both")
     ap.add_argument("--force", action="store_true", default=env_flag("FORCE_POST"),
                     help="Post even if something was already posted today")
     ap.add_argument("--check", action="store_true", help="Validate calendar + media files and exit")
