@@ -18,6 +18,11 @@ on:
         description: "Post even if something was already posted today"
         type: boolean
         default: false
+      only:
+        description: "Which platform (use with a day number to re-post one platform only)"
+        type: choice
+        options: [both, facebook, instagram]
+        default: both
 
 # contents: write is needed so the run can save posted_state.json (which day is next)
 permissions:
@@ -61,6 +66,9 @@ jobs:
           POST_DAY: ${{ github.event.inputs.day }}
           DRY_RUN: ${{ github.event.inputs.dry_run }}
           FORCE_POST: ${{ github.event.inputs.force }}
+          POST_ONLY: ${{ github.event.inputs.only }}
+          # public media repo (Instagram must download the files from a public link)
+          MEDIA_BASE_URL: ${{ secrets.MEDIA_BASE_URL }}
         run: python post_to_facebook_instagram.py
 
       - name: Save progress (posted_state.json)
@@ -81,4 +89,3 @@ jobs:
         run: |
           echo "Posting failed - see the 'Post to Facebook & Instagram' step above."
           exit 1
-       
