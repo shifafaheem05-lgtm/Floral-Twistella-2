@@ -1,12 +1,18 @@
 {
-  "last_day": 1,
-  "last_posted_date": "2026-09-20",
+  "last_day": 2,
+  "last_posted_date": "2026-09-21",
   "history": [
     {
       "date": "2026-09-20",
       "day": 1,
       "facebook": "ok",
       "instagram": "failed"
+    },
+    {
+      "date": "2026-09-21",
+      "day": 2,
+      "facebook": "ok",
+      "instagram": "ok"
     }
   ]
 }
