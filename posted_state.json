@@ -1,6 +1,6 @@
 {
-  "last_day": 14,
-  "last_posted_date": "2026-10-04",
+  "last_day": 15,
+  "last_posted_date": "2026-10-05",
   "history": [
     {
       "date": "2026-09-20",
@@ -83,6 +83,12 @@
     {
       "date": "2026-10-04",
       "day": 14,
+      "facebook": "ok",
+      "instagram": "ok"
+    },
+    {
+      "date": "2026-10-05",
+      "day": 15,
       "facebook": "ok",
       "instagram": "ok"
     }
